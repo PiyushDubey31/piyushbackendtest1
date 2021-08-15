@@ -28,6 +28,17 @@ module.exports={
             
         }
 
+    },
+getUser:async(req,res)=>{
+    try {
+        const response=await User.find({});
+        res.json({"message":"response crested successfully",response})
+        
+    } catch (error) {
+        res.json({"message":"catch eror",error})
+        
     }
+
+}
 
 }

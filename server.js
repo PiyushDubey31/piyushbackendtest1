@@ -2,7 +2,7 @@ const express=require("express");
 const mongoose=require("mongoose")
 const cors=require("cors")
 // const body_parser=require("body-parser");
-const { CreateUser, getUser } = require("./api/controllers/userController");
+const { CreateUser, getUser, searchUserData } = require("./api/controllers/userController");
 const PORT=process.env.PORT || 3000;
 const app=express();
 app.use(cors())
@@ -14,7 +14,8 @@ app.get("/",(req,res)=>{
 app.post("/post/userData",CreateUser
    
 );
-app.get("/get/userData",getUser)
+app.get("/get/userData",getUser);
+app.post("/post/searchUserData",searchUserData)
 mongoose.connect( 
     "mongodb+srv://PiyushDubey31:piyushdubey0341@piyushbackendtest1.khg11.mongodb.net/piyushbackendtestdatabase?retryWrites=true&w=majority",{useNewUrlParser:true,useUnifiedTopology:true,useCreateIndex:true},
 (err,result)=>{

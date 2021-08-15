@@ -39,6 +39,23 @@ getUser:async(req,res)=>{
         
     }
 
+},
+searchUserData:async (req,res)=>{
+    const {username}=req.body;
+    try {
+
+        const response=await User.find({username:{ $regex: username}});
+        if( response && response!=null){
+            res.json({"message":"user found  successfuly",response})
+
+        }
+        
+
+        
+    } catch (error) {
+        
+    }
 }
+
 
 }

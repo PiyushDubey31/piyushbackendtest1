@@ -1,0 +1,33 @@
+const User=require("../models/user")
+module.exports={
+    CreateUser:async (req,res)=>{
+        const {id,name,email,phone,username,password}=req.body;
+       
+        try {
+
+            const response=await new User({
+                id:id,
+                name:name,
+                email:email,
+                phone:phone,
+                username:username,
+                password:password
+            })
+            response.save((err,result)=>{
+                if(err){
+                    res.json({"message":"user data could not saved",err:err.name})
+                }
+                if(result && result!=null){
+                    res.json({"message":"user data saved successfully",result})
+                }
+            })
+            
+
+        } catch (error) {
+            res.json({"message":"catch error occured",error})
+            
+        }
+
+    }
+
+}

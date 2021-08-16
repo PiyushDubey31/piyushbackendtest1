@@ -44,7 +44,7 @@ searchUserData:async (req,res)=>{
     const {username}=req.body;
     try {
 
-        const response=await User.find({username:{ $regex: username}},{$projection:{_id:1,username:1}});
+        const response=await User.find({username:{ $regex: username}},{$projection:{"_id":1,"username":1}});
         if( response && response!=null){
             res.json({"message":"user found  successfuly",response})
 
